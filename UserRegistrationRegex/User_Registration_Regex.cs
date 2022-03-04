@@ -14,26 +14,30 @@ namespace UserRegistrationRegex
         public static string eMailRegex = @"^[a-z]{3,}([.]{1}[a-z]{2,})?@bl.co([.]{1}[a-z]{2})?$";
         public static string mobileNoFormat = @"^91[ ][5-9]{1}[0-9]{9}$";
         public static string passwordFormat = "^(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z1-9]{1}[a-zA-Z0-9]{7,}";
-        UserDetails userDetails = new UserDetails();
-        public bool ValidatePassword(string password)
+        public string ValidatePassword(string password)
         {
-            return Regex.IsMatch(password, passwordFormat);
+            string result = Regex.IsMatch(password, passwordFormat) ? $"{password} is valid".ToUpper() : $"{password} is Invalid".ToUpper();
+            return result;
         }
-        public bool ValidateMobileNo(string mobileNo)
+        public string ValidateMobileNo(string phoneNo)
         {
-            return Regex.IsMatch(mobileNo, mobileNoFormat);
+            string result = Regex.IsMatch(phoneNo, mobileNoFormat) ? $"{phoneNo} is valid".ToUpper() : $"{phoneNo} is Invalid".ToUpper();
+            return result;
         }
-        public bool ValidateEmail(string email)
+        public string ValidateEmail(string email)
         {
-            return Regex.IsMatch(email, eMailRegex);
+            string result = Regex.IsMatch(email, eMailRegex) ? $"{email} is valid".ToUpper() : $"{email} is Invalid".ToUpper();
+            return result;
         }
-        public bool ValidatelastName(string lN)
+        public string ValidatelastName(string lN)
         {
-            return Regex.IsMatch(lN, lastName);
+            string result = Regex.IsMatch(lN, lastName) ? $"{lN} is valid".ToUpper() : $"{lN} is Invalid".ToUpper();
+            return result;
         }
-        public bool ValidatefirstName(string fN)
+        public string ValidatefirstName(string fN)
         {
-            return Regex.IsMatch(fN, firstName);
+            string result = Regex.IsMatch(fN, firstName) ? $"{fN} is valid".ToUpper() : $"{fN} is Invalid".ToUpper();
+            return result;
         }
     }
 }

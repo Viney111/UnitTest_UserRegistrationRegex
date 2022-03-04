@@ -16,16 +16,22 @@ namespace UserRegistrationRegex
 
         public void ContactDetails()
         {
+            User_Registration_Regex user_Registration_Regex = new User_Registration_Regex();
             Console.Write("Enter first name: ");
             firstName = Console.ReadLine();
+            Console.WriteLine(user_Registration_Regex.ValidatefirstName(firstName));
             Console.Write("Enter last name: ");
             lastName = Console.ReadLine();
+            Console.WriteLine(user_Registration_Regex.ValidatelastName(lastName));
             Console.Write("Enter email: ");
             email = Console.ReadLine();
+            Console.WriteLine(user_Registration_Regex.ValidateEmail(email));
             Console.Write("Enter Phone No: ");
             phoneNo = Console.ReadLine();
+            Console.WriteLine(user_Registration_Regex.ValidateMobileNo(phoneNo));
             Console.Write("Enter password: ");
             password = Console.ReadLine();
+            Console.WriteLine(user_Registration_Regex.ValidatePassword(password));
         }
     }
 }

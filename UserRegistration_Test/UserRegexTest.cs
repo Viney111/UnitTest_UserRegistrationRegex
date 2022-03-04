@@ -8,69 +8,70 @@ namespace UserRegistration_Test
     {
         //Arrange
         User_Registration_Regex user_Registration_Regex = new User_Registration_Regex();
+        UserDetails userDetails = new UserDetails();
         [TestMethod]
         public void RightFirstNameTestMethod_ReturnTrue()
         {
             //Add
-            bool result = user_Registration_Regex.ValidatefirstName("Viney");
+            string result = user_Registration_Regex.ValidatefirstName("Viney");
             //Assert
-            Assert.AreEqual(true,result);
+            Assert.AreEqual("Viney is Valid".ToUpper(), result);
         }
         [TestMethod]
         public void RightLastNameTestMethod_ReturnTrue()
         {
-            bool result = user_Registration_Regex.ValidatelastName("Khaneja");
-            Assert.AreEqual(true, result);
+            string result = user_Registration_Regex.ValidatelastName("Khaneja");
+            Assert.AreEqual("Khaneja is valid".ToUpper(), result);
         }
         [TestMethod]
         public void RightEmailTestMethod_ReturnTrue()
         {
-            bool result = user_Registration_Regex.ValidateEmail("vineykhaneja@bl.co");
-            Assert.AreEqual(true, result);
+            string result = user_Registration_Regex.ValidateEmail("viney@bl.co");
+            Assert.AreEqual("viney@bl.co is valid".ToUpper(), result);
         }
         [TestMethod]
         public void RightPasswordTestMethod_ReturnTrue()
         {
-            bool result = user_Registration_Regex.ValidatePassword("aaaaAsdd@323");
-            Assert.AreEqual(true, result);
+            string result = user_Registration_Regex.ValidatePassword("3515156Aw@hv");
+            Assert.AreEqual("3515156Aw@hv is valid".ToUpper(), result);
         }
         [TestMethod]
         public void RightMobileNumberTestMethod_ReturnTrue()
         {
-            bool result = user_Registration_Regex.ValidateMobileNo("91 7206594149");
-            Assert.AreEqual(true, result);
+            string result = user_Registration_Regex.ValidateMobileNo("91 7206594149");
+            Assert.AreEqual("91 7206594149 is valid".ToUpper(), result);
         }
         [TestMethod]
         public void WrongFirstNameTestMethod_ReturnFalse()
         {
             //Add
-            bool result = user_Registration_Regex.ValidatefirstName("viney");
+            string result = user_Registration_Regex.ValidatefirstName("viney");
             //Assert
-            Assert.AreEqual(false, result);
+            Assert.AreEqual("viney is invalid".ToUpper(), result);
         }
         [TestMethod]
         public void WrongLastNameTestMethod_ReturnFalse()
         {
-            bool result = user_Registration_Regex.ValidatelastName("khaneja");
-            Assert.AreEqual(false, result);
+            string result = user_Registration_Regex.ValidatelastName("khanejja");
+            Assert.AreEqual("khanejja is invalid".ToUpper(), result);
         }
         [TestMethod]
         public void WrongEmailTestMethod_ReturnFalse()
         {
-            bool result = user_Registration_Regex.ValidateEmail("vineykhanbl.co");
-            Assert.AreEqual(false, result);
+            string result = user_Registration_Regex.ValidateEmail("bjhcb");
+            Assert.AreEqual("bjhcb is invalid".ToUpper(), result);
         }
         [TestMethod]
         public void WrongPasswordTestMethod_ReturnFalse()
         {
-            bool result = user_Registration_Regex.ValidatePassword("aaaaAsdd323");
-            Assert.AreEqual(false, result);
+            string result = user_Registration_Regex.ValidatePassword("jdsk");
+            Assert.AreEqual("jdsk is invalid".ToUpper(), result);
         }
         [TestMethod]
         public void WrongMobileNumberTestMethod_ReturnFalse()
         {
-            bool result = user_Registration_Regex.ValidateMobileNo("7206594149");
-            Assert.AreEqual(false, result);
+            string result = user_Registration_Regex.ValidateMobileNo("jbcb");
+            Assert.AreEqual("jbcb is invalid".ToUpper(), result);
         }
     }
 }

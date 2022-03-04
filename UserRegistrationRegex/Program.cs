@@ -9,10 +9,16 @@ namespace UserRegistrationRegex
     {
         static void Main(string[] args)
         {
-            //UserDetails userdetails = new UserDetails();
-            //userdetails.ContactDetails();
-            User_Registration_Regex user_Registration_Regex = new User_Registration_Regex();
-            Console.WriteLine(user_Registration_Regex.ValidateMobileNo("7206594149"));
+            string chooseOptionForEnteringUserDetails = string.Empty;
+            List<UserDetails> usersList = new List<UserDetails>();
+            do
+            {
+                UserDetails userDetails = new UserDetails();
+                userDetails.ContactDetails();
+                usersList.Add(userDetails);
+                Console.WriteLine("Do you want to enter more users details? \n\"Y\" or \"N\"");
+                chooseOptionForEnteringUserDetails = Console.ReadLine();
+            } while (chooseOptionForEnteringUserDetails.ToUpper() != "N");
         }
     }
 }
