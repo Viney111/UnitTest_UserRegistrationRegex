@@ -11,7 +11,7 @@ namespace UserRegistrationRegex
     {
         public static string firstName = "^[A-Z]{1}[a-zA-Z]{2,}$";
         public static string lastName = "^[A-Z]{1}[a-zA-Z]{2,}$";
-        public static string eMailRegex = "^[a-z]{3,}(([.|+]{1})?([-]{1})?[0-9]{1,})?@[a-z0-9]{1,}.[a-z]{2}(.[a-z]{2,4})?$";
+        public static string eMailRegex = @"^[a-zA-Z0-9]+([\.\+\-][a-zA-Z0-9]+)?@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,}(\.[a-zA-Z]+)?)$";
         public static string mobileNoFormat = @"^91[ ][5-9]{1}[0-9]{9}$";
         public static string passwordFormat = "^(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z1-9]{1}[a-zA-Z0-9]{7,}";
         public string ValidatePassword(string password)
