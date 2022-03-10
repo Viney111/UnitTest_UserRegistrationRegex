@@ -6,9 +6,12 @@ namespace UserRegistration_Test
     [TestClass]
     public class UserRegexTest
     {
+        #region Making Object of Regex Class, to be used in all Test Cases.
         //Arrange
         User_Registration_Regex user_Registration_Regex = new User_Registration_Regex();
-        UserDetails userDetails = new UserDetails();
+        #endregion
+
+        #region Unit Tests for Validating Correct Inputs.
         [TestMethod]
         [DataRow("Viney", "VINEY IS VALID")]
         [DataRow("Gaurav", "GAURAV IS VALID")]
@@ -64,6 +67,9 @@ namespace UserRegistration_Test
         [DataRow("viney", "VINEY IS INVALID")]
         [DataRow("gaurav", "GAURAV IS INVALID")]
         [DataRow("He", "HE IS INVALID")]
+        #endregion
+
+        #region Unit Tests for Validating Incorrect Inputs.
         public void WrongFirstNameTestMethod_ReturnFalse(string checkingName, string expected)
         {
             //Add
@@ -114,5 +120,6 @@ namespace UserRegistration_Test
             string result = user_Registration_Regex.ValidateMobileNo(checkingPhineNo);
             Assert.AreEqual(expected.ToUpper(), result);
         }
+        #endregion
     }
 }
