@@ -11,27 +11,44 @@ namespace UserRegistration_Test
         User_Registration_Regex user_Registration_Regex = new User_Registration_Regex();
         #endregion
 
-        #region Unit Tests for Validating Correct Inputs.
+        #region Unit Test for First Name
         [TestMethod]
         [DataRow("Viney", "VINEY IS VALID")]
         [DataRow("Gaurav", "GAURAV IS VALID")]
         [DataRow("Hemlata", "HEMLATA IS VALID")]
-        public void RightFirstNameTestMethod_ReturnTrue(string checkingName, string expected)
+        [DataRow("", "The first name value could not be empty")]
+        [DataRow(null, "The first name value could not be null")]
+        [DataRow("viney", "VINEY IS INVALID")]
+        [DataRow("gaurav", "GAURAV IS INVALID")]
+        [DataRow("He", "HE IS INVALID")]
+        public void FirstNameTestMethod_ReturnExpectedValue(string checkingName, string expected)
         {
             //Add
             string result = user_Registration_Regex.ValidatefirstName(checkingName);
             //Assert
             Assert.AreEqual(expected, result);
         }
+        #endregion
+
+        #region Unit Test for Last Name
+        [TestMethod]
         [DataRow("Khaneja", "KHANEJA IS VALID")]
         [DataRow("Pandey", "PANDEY IS VALID")]
         [DataRow("Sharma", "SHARMA IS VALID")]
-        [TestMethod]
-        public void RightLastNameTestMethod_ReturnTrue(string checkingLastName, string expected)
+        [DataRow(null, "The last name value could not be null")]
+        [DataRow("", "The last name value could not be empty")]
+        [DataRow("khaneja", "KHANEJA IS INVALID")]
+        [DataRow("pandey", "PANDEY IS INVALID")]
+        [DataRow("ar", "AR IS INVALID")]
+        public void LastNameTestMethod_ReturnExpectedValue(string checkingLastName, string expected)
         {
             string result = user_Registration_Regex.ValidatelastName(checkingLastName);
             Assert.AreEqual(expected, result);
         }
+        #endregion
+
+        #region Unit Test for Emails
+        [TestMethod]
         [DataRow("abc@gmail.com", "abc@gmail.com is valid")]
         [DataRow("abc-100@yahoo.com", "abc-100@yahoo.com is valid")]
         [DataRow("abc.100@yahoo.com", "abc.100@yahoo.com is valid")]
@@ -41,52 +58,8 @@ namespace UserRegistration_Test
         [DataRow("abc@1.com", "abc@1.com is valid")]
         [DataRow("abc@gmail.com.com", "abc@gmail.com.com is valid")]
         [DataRow("abc+100@gmail.com", "abc+100@gmail.com is valid")]
-        [TestMethod]
-        public void RightEmailTestMethod_ReturnTrue(string checkingEmail, string expected)
-        {
-            string result = user_Registration_Regex.ValidateEmail(checkingEmail);
-            Assert.AreEqual(expected.ToUpper(), result);
-        }
-        [TestMethod]
-        [DataRow("7062662Aa@Vi", "7062662Aa@Vi is valid")]
-        [DataRow("hjchjcV55@bk", "hjchjcV55@bk is valid")]
-        public void RightPasswordTestMethod_ReturnTrue(string checkingPassword, string expected)
-        {
-            string result = user_Registration_Regex.ValidatePassword(checkingPassword);
-            Assert.AreEqual(expected.ToUpper(), result);
-        }
-        [TestMethod]
-        [DataRow("91 7206594149", "91 7206594149 is valid")]
-        [DataRow("91 7015906297", "91 7015906297 is valid")]
-        public void RightMobileNumberTestMethod_ReturnTrue(string checkingMobileNumber, string expected)
-        {
-            string result = user_Registration_Regex.ValidateMobileNo(checkingMobileNumber);
-            Assert.AreEqual(expected.ToUpper(), result);
-        }
-        [TestMethod]
-        [DataRow("viney", "VINEY IS INVALID")]
-        [DataRow("gaurav", "GAURAV IS INVALID")]
-        [DataRow("He", "HE IS INVALID")]
-        #endregion
-
-        #region Unit Tests for Validating Incorrect Inputs.
-        public void WrongFirstNameTestMethod_ReturnFalse(string checkingName, string expected)
-        {
-            //Add
-            string result = user_Registration_Regex.ValidatefirstName(checkingName);
-            //Assert
-            Assert.AreEqual(expected.ToUpper(), result);
-        }
-        [TestMethod]
-        [DataRow("khaneja", "KHANEJA IS INVALID")]
-        [DataRow("pandey", "PANDEY IS INVALID")]
-        [DataRow("ar", "AR IS INVALID")]
-        public void WrongLastNameTestMethod_ReturnFalse(string checkingLastName, string expected)
-        {
-            string result = user_Registration_Regex.ValidatelastName(checkingLastName);
-            Assert.AreEqual(expected.ToUpper(), result);
-        }
-        [TestMethod]
+        [DataRow(null, "The email value could not be null")]
+        [DataRow("", "The email value could not be empty")]
         [DataRow("abc", "abc is invalid")]
         [DataRow("abc@.com.my", "abc@.com.my is invalid")]
         [DataRow("abc123@.com", "abc123@.com is invalid")]
@@ -99,26 +72,40 @@ namespace UserRegistration_Test
         [DataRow("abc@abc@gmail.com", "abc@abc@gmail.com is invalid")]
         [DataRow("abc@gmail.com.1a", "abc@gmail.com.1a is invalid")]
         [DataRow("abc@gmail.com.aa.au", "abc@gmail.com.aa.au is invalid")]
-        public void WrongEmailTestMethod_ReturnFalse(string checkingEmail, string expected)
+        public void EmailTestMethod_ReturnExpectedValue(string checkingEmail, string expected)
         {
             string result = user_Registration_Regex.ValidateEmail(checkingEmail);
-            Assert.AreEqual(expected.ToUpper(), result);
+            Assert.AreEqual(expected.ToUpper(), result.ToUpper());
         }
+        #endregion
+
+        #region Unit Test for Passwords
         [TestMethod]
+        [DataRow("7062662Aa@Vi", "7062662Aa@Vi is valid")]
+        [DataRow("hjchjcV55@bk", "hjchjcV55@bk is valid")]
+        [DataRow(null, "The passwords value could not be null")]
+        [DataRow("", "The password value could not be empty")]
         [DataRow("7062662a@vi", "7062662a@vi is invalid")]
         [DataRow("hjchjc@bk", "hjchjc@bk is invalid")]
-        public void WrongPasswordTestMethod_ReturnFalse(string checkingPassword, string expected)
+        public void PasswordTestMethod_ReturnExpectedValue(string checkingPassword, string expected)
         {
             string result = user_Registration_Regex.ValidatePassword(checkingPassword);
-            Assert.AreEqual(expected.ToUpper(), result);
+            Assert.AreEqual(expected.ToUpper(), result.ToUpper());
         }
+        #endregion
+
+        #region Unit Test for Phone Number
         [TestMethod]
+        [DataRow("91 7206594149", "91 7206594149 is valid")]
+        [DataRow("91 7015906297", "91 7015906297 is valid")]
+        [DataRow(null, "The phone number value could not be null")]
+        [DataRow("", "The phone number value could not be empty")]
         [DataRow("917206594149", "917206594149 is invalid")]
         [DataRow("91 7015907", "91 7015907 is invalid")]
-        public void WrongMobileNumberTestMethod_ReturnFalse(string checkingPhineNo, string expected)
+        public void MobileNumberTestMethod_ReturnExpectedValue(string checkingMobileNumber, string expected)
         {
-            string result = user_Registration_Regex.ValidateMobileNo(checkingPhineNo);
-            Assert.AreEqual(expected.ToUpper(), result);
+            string result = user_Registration_Regex.ValidateMobileNo(checkingMobileNumber);
+            Assert.AreEqual(expected.ToUpper(), result.ToUpper());
         }
         #endregion
     }
